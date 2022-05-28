@@ -32,4 +32,4 @@ the platform only if it is approved.
 - H2 database to testing
 
 ### Requirements
-- Download and run on MySQL server: chatboxdbTest.sql, authdb.sql, qadbtest.sql
+- Download and run on MySQL server: chatboxtest.sql, authdb.sql, qadbtest.sql
