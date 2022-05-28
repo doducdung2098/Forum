@@ -28,8 +28,7 @@ the platform only if it is approved.
 - Java Spring Boot 2.6.7
 - Angular 
 - Websocket
-- Mysql, JPA
-- H2 database to testing
+- Mysql, JPA, H2
 
 ### Requirements
 - Download and run on MySQL server: chatboxtest.sql, authdb.sql, qadbtest.sql
