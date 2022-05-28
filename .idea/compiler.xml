@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="CapstoneServer" />
+        <module name="DoConnect_Chatbox" />
+        <module name="DoConnect_Forum" />
+        <module name="AuthModule" />
+        <module name="ChatboxModule" />
+        <module name="DoConnect_Auth" />
+        <module name="QuestionAndAnswerModule" />
+        <module name="DoConnect_Chatbot" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="AuthModule" target="17" />
+      <module name="CapstoneServer" target="17" />
+      <module name="ChatboxModule" target="17" />
+      <module name="DoConnect_Auth" target="17" />
+      <module name="DoConnect_Chatbot" target="17" />
+      <module name="DoConnect_Chatbox" target="17" />
+      <module name="DoConnect_Forum" target="17" />
+      <module name="DoConnect_Gateway" target="1.5" />
+      <module name="DoConnect_Server" target="17" />
+      <module name="QuestionAndAnswerModule" target="17" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="AuthModule" options="-parameters" />
+      <module name="CapstoneServer" options="-parameters" />
+      <module name="ChatboxModule" options="-parameters" />
+      <module name="DoConnect_Auth" options="-parameters" />
+      <module name="DoConnect_Chatbot" options="-parameters" />
+      <module name="DoConnect_Chatbox" options="-parameters" />
+      <module name="DoConnect_Forum" options="-parameters" />
+      <module name="DoConnect_Server" options="-parameters" />
+      <module name="QuestionAndAnswerModule" options="-parameters" />
+    </option>
+  </component>
+</project>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/DoConnect_Auth/AuthModule.iml" filepath="$PROJECT_DIR$/DoConnect_Auth/AuthModule.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DoConnect_Server/CapstoneServer.iml" filepath="$PROJECT_DIR$/DoConnect_Server/CapstoneServer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DoConnect_Chatbox/ChatboxModule.iml" filepath="$PROJECT_DIR$/DoConnect_Chatbox/ChatboxModule.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/DoConnect.iml" filepath="$PROJECT_DIR$/.idea/DoConnect.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AuthModule/DoConnect_Auth.iml" filepath="$PROJECT_DIR$/AuthModule/DoConnect_Auth.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DoConnect_Chatbox/DoConnect_Chatbot.iml" filepath="$PROJECT_DIR$/DoConnect_Chatbox/DoConnect_Chatbot.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ChatboxModule/DoConnect_Chatbox.iml" filepath="$PROJECT_DIR$/ChatboxModule/DoConnect_Chatbox.iml" />
+      <module fileurl="file://$PROJECT_DIR$/QuestionAndAnswerModule/DoConnect_Forum.iml" filepath="$PROJECT_DIR$/QuestionAndAnswerModule/DoConnect_Forum.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DoConnect_Forum/QuestionAndAnswerModule.iml" filepath="$PROJECT_DIR$/DoConnect_Forum/QuestionAndAnswerModule.iml" />
+    </modules>
+  </component>
+</project>

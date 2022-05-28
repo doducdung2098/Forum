@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/AuthModule/pom.xml" />
+        <option value="$PROJECT_DIR$/ChatboxModule/pom.xml" />
+        <option value="$PROJECT_DIR$/CapstoneServer/pom.xml" />
+        <option value="$PROJECT_DIR$/QuestionAndAnswerModule/pom.xml" />
+        <option value="$PROJECT_DIR$/DoConnect_Forum/pom.xml" />
+        <option value="$PROJECT_DIR$/DoConnect_Server/pom.xml" />
+        <option value="$PROJECT_DIR$/DoConnect_Chatbot/pom.xml" />
+        <option value="$PROJECT_DIR$/DoConnect_Auth/pom.xml" />
+        <option value="$PROJECT_DIR$/DoConnect_Chatbox/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="17" project-jdk-type="JavaSDK" />
+  <component name="ProjectType">
+    <option name="id" value="jpab" />
+  </component>
+</project>
