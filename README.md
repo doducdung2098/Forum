@@ -25,8 +25,8 @@ the platform only if it is approved.
 4. As an Admin I should be able to delete inappropriate Questions or Answers.
 
 ### Tech stack
-- Java Spring Boot
-- Angular
+- Java Spring Boot 2.6.7
+- Angular 
 - Websocket
 - Mysql, JPA
 - H2 database to testing
