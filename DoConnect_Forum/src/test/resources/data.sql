@@ -1,1 +1,0 @@
-INSERT into `user` (`id`,``username`, `password`, `email`, `phone`, `role`) VALUES (1,'admin', '12345', 'admin@123', '0379242892', 'admin');
