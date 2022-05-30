@@ -1,9 +1,7 @@
 package com.hcl.questionandanswermodule.model.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.hcl.questionandanswermodule.model.dto.responseDto.TopicDetailsDTO;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -13,6 +11,7 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class TopicDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,4 +26,11 @@ public class TopicDetails {
     @JoinColumn(name = "`question_id`", nullable=false)
     private Question question;
 
+    public TopicDetailsDTO toDto(){
+        return new TopicDetailsDTO().builder()
+                .id(id)
+                .questionDto(question.toDto())
+                .topicDto(topic.toDto())
+                .build();
+    }
 }

@@ -39,7 +39,7 @@ public class QuestionServiceImpl implements QuestionService {
     @Override
     public QuestionDto save(QuestionDto t) {
         if (t == null){
-            throw new InvalidInputException("input invalid");
+            throw new InvalidInputException(Constant.INVALID_MESSAGE);
         }
         return questionRepository.save(t.toEntity()).toDto();
     }
@@ -47,20 +47,23 @@ public class QuestionServiceImpl implements QuestionService {
     @Override
     public void deleteById(int id) {
         if (!questionRepository.findById(id).isPresent() ){
-            throw new InvalidInputException("input invalid");
+            throw new InvalidInputException(Constant.INVALID_MESSAGE);
         }
         questionRepository.deleteById(id);
     }
 
     @Override
     public void update(QuestionDto t) {
-
+        if(!questionRepository.findById(t.getId()).isPresent()){
+            throw new InvalidInputException(Constant.INVALID_MESSAGE);
+        }
+        questionRepository.save(t.toEntity());
     }
 
     @Override
     public List<QuestionDto> findAll(int paged) {
         if(paged < minIndex){
-            throw new InvalidInputException("input invalid");
+            throw new InvalidInputException(Constant.INVALID_MESSAGE);
         }
         Pageable pageable = PageRequest.of(paged, 10, Sort.by("id").descending());
         return toDtoList(questionRepository.findQuestionByStatus(1, pageable).getContent());
@@ -135,7 +138,7 @@ public class QuestionServiceImpl implements QuestionService {
 
     public List<QuestionDto> toDtoList(List<Question> questionList){
         if(questionList == null || questionList.isEmpty()){
-            return null;
+            return new ArrayList<>();
         }else {
             List<QuestionDto> list = new ArrayList<>();
             questionList.forEach(e -> {

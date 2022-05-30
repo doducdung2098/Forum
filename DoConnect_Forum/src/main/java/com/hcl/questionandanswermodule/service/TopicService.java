@@ -1,4 +1,8 @@
 package com.hcl.questionandanswermodule.service;
 
-public interface TopicService extends DAO{
+import com.hcl.questionandanswermodule.model.dto.responseDto.TopicDto;
+import com.hcl.questionandanswermodule.model.entity.Topic;
+
+public interface TopicService extends DAO<TopicDto, Topic>{
+
 }
