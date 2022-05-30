@@ -66,7 +66,7 @@ public class QuestionController {
 
     @GetMapping("/questions")
     public ResponseEntity getAllQuestion(){
-        List<QuestionDto> questionList = questionService.findAllPageNumber(0);
+        List<QuestionDto> questionList = questionService.findAll(0);
         if (questionList == null || questionList.isEmpty()){
             return ResponseHandler.generateResponse("Dont have any question!", HttpStatus.NO_CONTENT, "questions", null);
         }else {

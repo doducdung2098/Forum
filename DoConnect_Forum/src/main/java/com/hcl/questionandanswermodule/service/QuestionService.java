@@ -12,6 +12,6 @@ public interface QuestionService extends DAO<QuestionDto, Question>{
      List<QuestionDto> searchByTitle(String title);
      Question approvedQuestion(int id, int status);
      List<QuestionDto> findQuestionToApprove(int paged);
-     List<QuestionDto> findAllPageNumber(int paged);
      List<QuestionDto> findAll(String title, String content, String username);
+     List<QuestionDto> toDtoList(List<Question> questions);
 }

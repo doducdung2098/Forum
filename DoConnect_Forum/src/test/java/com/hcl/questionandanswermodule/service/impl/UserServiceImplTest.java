@@ -31,10 +31,6 @@ class UserServiceImplTest {
     }
 
     @Test
-    void sendEmail() {
-    }
-
-    @Test
     void toUserDTOList() {
     }
 }

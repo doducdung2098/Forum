@@ -71,6 +71,9 @@ public class QuestionServiceImpl implements QuestionService {
 
     @Override
     public Optional<QuestionDto> findById(int id) {
+        if (id < 0){
+            throw new InvalidInputException(Constant.INVALID_MESSAGE);
+        }
         if(questionRepository.findById(id).isPresent()) {
             return Optional.ofNullable(questionRepository.findById(id).get().toDto());
         }else {
@@ -118,15 +121,6 @@ public class QuestionServiceImpl implements QuestionService {
     }
 
     @Override
-    public List<QuestionDto> findAllPageNumber(int paged) {
-        if (paged < minIndex){
-            throw new InvalidInputException(Constant.INVALID_MESSAGE);
-        }
-        Pageable pageable = PageRequest.of(paged, 10, Sort.by("id").descending());
-        return toDtoList(questionRepository.findAll(pageable).getContent());
-    }
-
-    @Override
     public List<QuestionDto> findAll(String title, String content, String username) {
         List<Question> questions = questionRepository.findAll(QuestionSpecs.searchQuestion(title, content, username));
         return toDtoList(questions);
@@ -136,6 +130,7 @@ public class QuestionServiceImpl implements QuestionService {
     convert to dto
      */
 
+    @Override
     public List<QuestionDto> toDtoList(List<Question> questionList){
         if(questionList == null || questionList.isEmpty()){
             return new ArrayList<>();
