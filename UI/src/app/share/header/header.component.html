@@ -1,0 +1,37 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" integrity="sha256-46r060N2LrChLLb5zowXQ72/iKKNiw/lAmygmHExk/o=" crossorigin="anonymous" />
+
+<nav class="navbar navbar-inverse">
+    <div class="container">
+        <div class="container-fluid">
+            <div class="navbar-header">
+              <a class="navbar-brand" routerLink="forum">DoConnect</a>
+            </div>
+            <ul class="nav navbar-nav">
+              <li class="active"><a routerLink="forum">Home</a></li>
+              <li *ngIf="showTopic == true">
+                <ul class="nav navbar-nav">
+                    <li><a routerLink="questions-list"><span class="glyphicon"></span>Manager Questions</a></li>
+                    <li><a routerLink="answers-list"><span class="glyphicon"></span>Manager Answers</a></li>
+                </ul>
+              </li>
+            </ul>
+            <div *ngIf="currentUser == null; then displayLogin else displayLogout"></div>
+            <ng-template #displayLogin>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a routerLink="sign-up"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                    <li><a routerLink="login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                </ul>
+            </ng-template>
+            <ng-template #displayLogout>
+                <ul class="nav navbar-nav navbar-right" style="cursor: pointer;">
+                    <li><a routerLink="chatbox"><span class="active glyphicon glyphicon-book"></span> Chatbox</a></li>
+                    <li><a (click)="logout()"><span class="glyphicon glyphicon-log-out" ></span> Logout</a></li>
+                </ul>
+            </ng-template>
+            
+          </div>
+    </div>   
+</nav>

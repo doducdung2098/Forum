@@ -1,0 +1,96 @@
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+    <!-- Login Form -->
+    <form [formGroup]="SignUpForm" (ngSubmit)="onSubmit()">
+      <input type="text" id="login" class="fadeIn second" formControlName="username" placeholder="username">
+
+      <div class="error">
+        <span *ngIf="username && username.errors?.['required']  && submit">
+           this filed is required!
+        </span>
+        <span *ngIf="username && username.errors?.['minlength']  && submit">
+           Username must be at least 8 character.
+        </span>
+     </div>
+
+      <input type="password" id="password"
+      style="background-color: #f6f6f6;
+      border: none;
+      color: #0d0d0d;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 5px;
+      width: 85%;
+      border: 2px solid #f6f6f6;
+      transition: all 0.5s ease-in-out;
+      border-radius: 5px 5px 5px 5px;" class="fadeIn third" formControlName="password" placeholder="password">
+
+      <div class="error">
+        <span *ngIf="password && password.errors?.['required']  && submit">
+           this filed is required!
+        </span>
+        <span *ngIf="password && password.errors?.['minlength']  && submit">
+          password must be at least 8 character.
+        </span>
+     </div>
+
+
+      <input type="text" id="login" class="fadeIn second" formControlName="email" placeholder="email">
+
+      <div class="error">
+        <span *ngIf="email && email.errors?.['required']  && submit">
+           this filed is required!
+        </span>
+        <span *ngIf="email && email.errors?.['email']  && submit">
+           email invalid
+        </span>
+     </div>
+      <input type="text" id="phone" class="fadeIn third" formControlName="phone" placeholder="phone">
+      <div class="error">
+         <span *ngIf="phone && phone.errors?.['required']  && submit">
+            this filed is required!
+         </span>
+      </div>
+      <input type="text" id="login" class="fadeIn second" formControlName="address" placeholder="address">
+      <div class="error">
+         <span *ngIf="address && address.errors?.['required']  && submit">
+            this filed is required!
+         </span>
+      </div>
+      <div>
+         <select formControlName="role" id="" style="background-color: #f6f6f6;
+         border: none;
+         color: #0d0d0d;
+         text-align: center;
+         text-decoration: none;
+         display: inline-block;
+         font-size: 16px;
+         margin: 5px;
+         width: 85%;
+         border: 2px solid #f6f6f6;
+         transition: all 0.5s ease-in-out;
+         border-radius: 5px 5px 5px 5px;">
+            <option value="customer" selected disabled>Role</option>
+            <option value="admin">Admin</option>
+            <option value="customer">Customer</option>
+         </select>
+      </div>
+      <div class="error">
+         <span *ngIf="address && address.errors?.['required']  && submit">
+            this filed is required!
+         </span>
+      </div>
+      <input type="submit" class="fadeIn fourth" value="Sign up">
+    </form>
+
+  </div>
+</div>

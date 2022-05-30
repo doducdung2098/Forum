@@ -74,13 +74,16 @@ public class AnswersServiceImpl implements AnswersService {
 
     @Override
     public Optional<AnswersDto> findById(int id) {
+        if (id < 0){
+            throw new InvalidInputException(Constant.INVALID_MESSAGE);
+        }
         Optional<Answers> answers = answersRepository.findById(id);
         return answers.map(value -> Optional.ofNullable(value.toDto())).orElse(null);
     }
 
     @Override
     public List<AnswersDto> findByQuestionId(int id, int paged) {
-        if (paged < minIndex){
+        if (paged < minIndex || id < 0){
             throw new InvalidInputException(Constant.INVALID_MESSAGE);
         }
         Pageable pageable = PageRequest.of(paged, 10, Sort.unsorted());
@@ -109,8 +112,8 @@ public class AnswersServiceImpl implements AnswersService {
     convert to dto
      */
     public List<AnswersDto> toDto(List<Answers> answers){
-        if (answers.isEmpty()){
-            return null;
+        if (answers == null || answers.isEmpty()){
+            return new ArrayList<>();
         }else {
             List<AnswersDto> answersList = new ArrayList<>();
             answers.forEach(e -> {

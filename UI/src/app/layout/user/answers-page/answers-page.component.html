@@ -1,0 +1,61 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha256-46r060N2LrChLLb5zowXQ72/iKKNiw/lAmygmHExk/o=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+<div class="container-fluid mt-100 container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <div class="media flex-wrap w-100 align-items-center">
+                        <div class="media-body ml-3"> <a href="javascript:void(0)" data-abc="true">{{question.user.username}}</a>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <p>{{question.content}}</p>
+                </div>
+                <div class="card-img m-auto" >
+                    <div class="container" style="margin-left: 150px;">
+                        <img src="./assets/image/{{question.img}}" class="d-block ui-w-40 rounded-circle" alt="" style="width: 800px; margin: auto;">
+                    </div>
+                </div>
+                <br>
+                <br>
+            </div>
+        </div>
+        
+        <div class="container mt-5 mb-5">
+            <div class="row height d-flex justify-content-center align-items-center">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="md-3 d-flex align-items-center p-3 form-color">
+                            <input #answers type="text" class="form-control " placeholder="Enter your answers..."> 
+                            
+                        </div>
+                        <div class="card-footer align-items-center">
+                            <div style="margin: auto; width: 25%;"> <button (click)="raiseAnswers(question.id, answers.value)" type="button" class="btn btn-primary " style="width: 100%;"><h6 >Reply</h6></button> </div>
+                        </div>
+                        <div *ngFor="let answers of answersList">
+                            <br>
+                            <div class="card">
+                                <div class="d-flex flex-row p-3">
+                                    <div class="w-100">
+                                        <div class="d-flex justify-content-between align-items-center card-body" >
+                                            <div class="d-flex flex-row align-items-center card-header"> 
+                                                <a ><h4 class="mr-2">{{answers.userDto.username}}</h4></a>
+                                            </div>
+                                        <p class="text-justify comment-text mb-0 m-auto">{{answers.content}}</p>
+                                        <div class="d-flex flex-row user-feed card-footer"> <span class="wish">{{answers.created_date}}</span> </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

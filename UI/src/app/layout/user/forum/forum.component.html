@@ -1,0 +1,73 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" integrity="sha256-46r060N2LrChLLb5zowXQ72/iKKNiw/lAmygmHExk/o=" crossorigin="anonymous" />
+<div class="container">
+<div class="main-body p-0">
+    <div class="inner-wrapper">
+        <!-- Inner sidebar -->
+        <div class="inner-sidebar">
+            <!-- Inner sidebar header -->
+            <div class="inner-sidebar-header justify-content-center">
+                <button class="btn btn-primary has-icon btn-block" type="button" data-toggle="modal" data-target="#threadModal" (click)="goRaiseQuestionPage()">
+                    NEW DISCUSSION
+                </button>
+            </div>
+            <!-- /Inner sidebar header -->
+
+            <!-- Inner sidebar body -->
+            <div class="inner-sidebar-body p-0">
+                <div class="p-3 h-100" data-simplebar="init">
+                    <div class="simplebar-wrapper" style="margin: -16px;">
+
+                        <div class="simplebar-mask">
+                            <div class="simplebar-offset" style="right: 0px; bottom: 0px;">
+                                <div class="simplebar-content-wrapper" style="height: 100%;">
+                                    <div class="simplebar-content" style="padding: 16px;">
+                                        <nav class="nav nav-pills nav-gap-y-1 flex-column">
+                                            <a href="javascript:void(0)" class="nav-link nav-link-faded has-icon" (click)="getQuestionOfTopic(1)"><h4>Science</h4></a>
+                                            <a href="javascript:void(0)" class="nav-link nav-link-faded has-icon" (click)="getQuestionOfTopic(2)"><h4>Technology</h4></a>
+                                            <a href="javascript:void(0)" class="nav-link nav-link-faded has-icon" (click)="getQuestionOfTopic(3)"><h4>Inspire</h4></a>
+                                            <a href="javascript:void(0)" class="nav-link nav-link-faded has-icon" (click)="getQuestionOfTopic(4)"><h4>Game</h4></a>
+                                            <a href="javascript:void(0)" class="nav-link nav-link-faded has-icon" (click)="getQuestionOfTopic(5)"><h4>Music</h4></a>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <!-- /Inner sidebar body -->
+        </div>
+        <!-- /Inner sidebar -->
+
+        <!-- Inner main -->
+        <div class="inner-main">
+            <!-- Inner main header -->
+            <div class="input-group">
+                <input #keyword type="search" class="form-control rounded" placeholder="Search in {{topic}} ..." aria-label="Search" aria-describedby="search-addon" />
+                <button type="button" class="btn btn-outline-primary" (click)="search(keyword.value)">search</button>
+            </div>
+            <!-- Forum List -->
+            <div class="inner-main-body p-2 p-sm-3 collapse forum-content show">
+                
+                <div class="card-entry" *ngFor="let question of questionList">
+                    <div class="card mb-2 mr-4 mt-4">
+                        <div class="card-body p-2 p-sm-3 ">
+                            <div class="media forum-item">
+                                <a (click)="viewQuestion(question.id)" data-toggle="collapse" data-target=".forum-content"><img src="./assets/image/{{question.img}}" class="mr-3 rounded-circle" width="865" height="auto" alt="User" /></a>
+                                <div class="media-body">
+                                    <h6><a (click)="viewQuestion(question.id)" data-toggle="collapse" data-target=".forum-content" class="text-body">{{question.title}}</a></h6>
+                                    <p class="text-secondary">
+                                        {{question.content}}
+                                    </p>
+                                    <p class="text-muted">{{question.user.username}}<span class="text-secondary font-weight-bold">{{question.created_date}} </span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+    
+</div>
+</div>
