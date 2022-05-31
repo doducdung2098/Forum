@@ -103,7 +103,6 @@ public class UserServiceImpl implements UserService {
         if (username == null || password == null){
             throw new NullPointerException(Constant.INVALID_MESSAGE);
         }
-        System.out.println(DigestUtils.md5Hex("12345").toUpperCase());
         String md5Hex = DigestUtils.md5Hex(password).toUpperCase();
         return userRepository.findByUsernameAndPassword(username, md5Hex).toDto();
     }
