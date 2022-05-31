@@ -33,16 +33,13 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDTO save(UserDTO t) {
         if (t == null){
-            throw new InvalidInputException(Constant.INVALID_MESSAGE);
+            throw new NullPointerException(Constant.INVALID_MESSAGE);
         }
         return userRepository.save(t.toEntity()).toDto();
     }
 
     @Override
     public void deleteById(int id) {
-        if (id < minIndex){
-            throw new InvalidInputException(Constant.INVALID_MESSAGE);
-        }
         if (!userRepository.findById(id).isPresent()){
             throw new InvalidInputException(Constant.INVALID_MESSAGE);
         }
@@ -51,6 +48,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void update(UserDTO t) {
+        if (t == null){
+            throw new NullPointerException(Constant.INVALID_MESSAGE);
+        }
         if (!userRepository.findById(t.getUserId()).isPresent()){
             throw new InvalidInputException(Constant.INVALID_MESSAGE);
         }
@@ -63,12 +63,20 @@ public class UserServiceImpl implements UserService {
             throw new InvalidInputException(Constant.INVALID_MESSAGE);
         }
         Pageable pageable = PageRequest.of(paged, 10, Sort.unsorted());
-        return toUserDTOList(userRepository.findAll(pageable).getContent());
+        return toDto(userRepository.findAll(pageable).getContent());
     }
 
     @Override
     public UserDTO findByUsername(String username) {
-        return userRepository.findByUsername(username).toDto();
+        if (username == null){
+            throw new NullPointerException(Constant.INVALID_MESSAGE);
+        }
+        if (userRepository.findByUsername(username) == null){
+            return null;
+        }
+        else {
+            return userRepository.findByUsername(username).toDto();
+        }
     }
 
     @Override
@@ -86,6 +94,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean sendEmail(String email) {
+        if (email == null){
+            throw new NullPointerException(Constant.INVALID_MESSAGE);
+        }
         try {
             DataMailDTO dataMail = new DataMailDTO();
 
@@ -108,9 +119,10 @@ public class UserServiceImpl implements UserService {
     convert to dto
      */
 
-    public List<UserDTO> toUserDTOList(List<User> users){
+    @Override
+    public List<UserDTO> toDto(List<User> users){
         if(users.isEmpty()){
-            return null;
+            return new ArrayList<>();
         }else {
             List<UserDTO> userDTOList = new ArrayList<>();
             users.forEach(e -> userDTOList.add(e.toDto()));
