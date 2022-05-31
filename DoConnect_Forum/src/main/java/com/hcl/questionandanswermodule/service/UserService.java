@@ -10,7 +10,6 @@ public interface UserService extends DAO<UserDTO, User>{
      UserDTO findByUsername(String username);
      Optional<UserDTO> findById(int id);
      boolean sendEmail(String email);
-
      List<UserDTO> toDto(List<User> users);
 
 }

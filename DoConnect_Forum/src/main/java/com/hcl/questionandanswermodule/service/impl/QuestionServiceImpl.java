@@ -66,6 +66,9 @@ public class QuestionServiceImpl implements QuestionService {
             throw new InvalidInputException(Constant.INVALID_MESSAGE);
         }
         Pageable pageable = PageRequest.of(paged, 10, Sort.by("id").descending());
+        if (questionRepository.findQuestionByStatus(1, pageable) == null){
+            return new ArrayList<>();
+        }
         return toDtoList(questionRepository.findQuestionByStatus(1, pageable).getContent());
     }
 

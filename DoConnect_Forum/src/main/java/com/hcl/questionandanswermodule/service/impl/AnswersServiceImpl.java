@@ -34,30 +34,26 @@ public class AnswersServiceImpl implements AnswersService {
     @Override
     public AnswersDto save(AnswersDto t) {
         if (t == null){
-            throw new InvalidInputException("input invalid");
+            throw new NullPointerException("input invalid");
         }
+
         Answers answers = answersRepository.save(t.toEntity());
         return answers.toDto();
     }
 
-    public Answers save(Answers t) {
-        if (t == null){
-            throw new InvalidInputException("input invalid");
-        }
-        Answers answers = answersRepository.save(t);
-        return answers;
-    }
-
     @Override
     public void deleteById(int id) {
-        if(!answersRepository.findById(id).isPresent()){
+        if(!findById(id).isPresent()){
             throw new InvalidInputException(Constant.INVALID_MESSAGE);
         }
         answersRepository.deleteById(id);
     }
 
     public void update(AnswersDto t) {
-        if(!answersRepository.findById(t.getId()).isPresent()){
+        if (t == null){
+            throw new NullPointerException(Constant.INVALID_MESSAGE);
+        }
+        if(!findById(t.getId()).isPresent()){
             throw new InvalidInputException(Constant.INVALID_MESSAGE);
         }
         answersRepository.save(t.toEntity());
@@ -93,7 +89,7 @@ public class AnswersServiceImpl implements AnswersService {
 
     @Override
     public Answers approvedAnswers(int id, int status) {
-        if(answersRepository.findById(id).isEmpty() || status < 0 || status > 1){
+        if(findById(id).isEmpty() || status < 0 || status > 1){
             throw new InvalidInputException(Constant.INVALID_MESSAGE);
         }
         return answersManagement.update(id, status);

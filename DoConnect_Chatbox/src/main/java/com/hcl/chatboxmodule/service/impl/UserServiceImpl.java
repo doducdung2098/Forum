@@ -39,7 +39,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void delete(int id) {
-        if (userRepository.findById(id).isPresent()){
+        if (findById(id).isPresent()){
             userRepository.deleteById(id);
         }
         else {
@@ -49,12 +49,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<UserDto> findAll() {
-        return toListDto(userRepository.findAll());
+        return toDto(userRepository.findAll());
     }
 
     @Override
     public Optional<UserDto> findById(int id) {
-        if (userRepository.findById(id).isPresent()){
+        if (findById(id).isPresent()){
             return Optional.ofNullable(userRepository.findById(id).get().toDto());
         }else {
             return null;
@@ -73,9 +73,9 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<UserDto> findAll(int paged) {
         Pageable pageable = PageRequest.of(paged, 10, Sort.unsorted());
-        List<UserDto> users = toListDto(userRepository.findAll(pageable).getContent());
+        List<UserDto> users = toDto(userRepository.findAll(pageable).getContent());
         if (users.isEmpty()){
-            return null;
+            return new ArrayList<>();
         }else {
             return users;
         }
@@ -85,15 +85,19 @@ public class UserServiceImpl implements UserService {
     /*
     convert to dto
      */
-    public List<UserDto> toListDto(List<User> userList){
-        if (userList.isEmpty()){
-            return  null;
+
+    @Override
+    public List<UserDto> toDto(List<User> users) {
+        if (users == null || users.isEmpty()){
+            return new ArrayList<>();
         }else {
             List<UserDto> userDtos = new ArrayList<>();
-            userList.forEach(e ->{
+            users.forEach(e ->{
                 userDtos.add(e.toDto());
             });
             return userDtos;
         }
     }
+
+
 }
