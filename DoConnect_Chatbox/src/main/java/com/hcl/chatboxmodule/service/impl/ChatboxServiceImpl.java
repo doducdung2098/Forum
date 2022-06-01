@@ -29,15 +29,15 @@ public class ChatboxServiceImpl implements ChatboxService {
 
     @Override
     public void update(ChatboxDto t) {
-
+        if (findById(t.getId()) == null){
+            throw new InvalidInputException(Constant.INVALID_MESSAGE);
+        }
+        chatboxRepository.save(t.toEntity());
     }
 
     @Override
     public void delete(int id) {
-        if (id <= 0){
-            throw new InvalidInputException(Constant.INVALID_MESSAGE);
-        }
-        if (chatboxRepository.findById(id).isPresent()){
+        if (findById(id) == null){
             throw new InvalidInputException(Constant.INVALID_MESSAGE);
         }
         chatboxRepository.deleteById(id);
@@ -45,7 +45,10 @@ public class ChatboxServiceImpl implements ChatboxService {
 
     @Override
     public List<ChatboxDto> findAll() {
-        return toListDto(chatboxRepository.findAll());
+        if (chatboxRepository.findAll().isEmpty()){
+            return new ArrayList<>();
+        }
+        return toDto(chatboxRepository.findAll());
     }
 
     public List<ChatboxDto> findAll(int paged) {
@@ -53,7 +56,7 @@ public class ChatboxServiceImpl implements ChatboxService {
             throw new InvalidInputException(Constant.INVALID_MESSAGE);
         }
 
-        return toListDto(chatboxRepository.findAll());
+        return toDto(chatboxRepository.findAll());
     }
 
     @Override
@@ -72,9 +75,13 @@ public class ChatboxServiceImpl implements ChatboxService {
     /*
     convert to dto
      */
-    public List<ChatboxDto> toListDto(List<Chatbox> chatboxList){
+    @Override
+    public List<ChatboxDto> toDto(List<Chatbox> chatboxList){
+        if (chatboxList == null){
+            throw new NullPointerException(Constant.INVALID_MESSAGE);
+        }
         if (chatboxList.isEmpty()){
-            return  null;
+            return new ArrayList<>();
         }else {
             List<ChatboxDto> chatboxDtos = new ArrayList<>();
             chatboxList.forEach(e ->{
