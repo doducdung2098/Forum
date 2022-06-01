@@ -1,5 +1,6 @@
 package com.hcl.chatboxmodule.service.impl;
 
+import com.hcl.chatboxmodule.helper.Constant;
 import com.hcl.chatboxmodule.model.entity.User;
 import com.hcl.chatboxmodule.exception.InvalidInputException;
 import com.hcl.chatboxmodule.repository.UserRepository;
@@ -19,6 +20,7 @@ import java.util.Optional;
 public class UserServiceImpl implements UserService {
 
     private UserRepository userRepository;
+    private Integer minIndex = 0;
 
     @Autowired
     public UserServiceImpl(UserRepository userRepository) {
@@ -28,33 +30,45 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDto save(UserDto t) {
         if (t == null){
-            throw new InvalidInputException("Invalid input");
+            throw new NullPointerException(Constant.INVALID_MESSAGE);
         }
         return userRepository.save(t.toEntity()).toDto();
     }
 
     @Override
     public void update(UserDto t) {
+        if (t == null){
+            throw new NullPointerException(Constant.INVALID_MESSAGE);
+        }
+        if (findById(t.getUserId()) == null){
+            throw new InvalidInputException(Constant.INVALID_MESSAGE);
+        }
+        userRepository.save(t.toEntity());
     }
 
     @Override
     public void delete(int id) {
-        if (findById(id).isPresent()){
-            userRepository.deleteById(id);
+        if (findById(id) == null){
+            throw new InvalidInputException(Constant.INVALID_MESSAGE);
         }
-        else {
-            throw new InvalidInputException("id not found");
-        }
+        userRepository.deleteById(id);
     }
 
     @Override
     public List<UserDto> findAll() {
-        return toDto(userRepository.findAll());
+        if (userRepository.findAll().isEmpty()){
+            return new ArrayList<>();
+        }else {
+            return toDto(userRepository.findAll());
+        }
     }
 
     @Override
     public Optional<UserDto> findById(int id) {
-        if (findById(id).isPresent()){
+        if (id <= minIndex){
+            throw new InvalidInputException(Constant.INVALID_MESSAGE);
+        }
+        if (userRepository.findById(id).isPresent()){
             return Optional.ofNullable(userRepository.findById(id).get().toDto());
         }else {
             return null;
@@ -64,14 +78,20 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDto findByUsername(String username) {
+        if (username == null){
+            throw new NullPointerException(Constant.INVALID_MESSAGE);
+        }
         if (userRepository.findByUsername(username) == null){
-            return  null;
+            return null;
         }else
-        return userRepository.findByUsername(username).toDto();
+            return userRepository.findByUsername(username).toDto();
     }
 
     @Override
     public List<UserDto> findAll(int paged) {
+        if (paged < minIndex){
+            throw new InvalidInputException(Constant.INVALID_MESSAGE);
+        }
         Pageable pageable = PageRequest.of(paged, 10, Sort.unsorted());
         List<UserDto> users = toDto(userRepository.findAll(pageable).getContent());
         if (users.isEmpty()){
