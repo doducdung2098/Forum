@@ -5,7 +5,7 @@
 DoConnect is a popular Q and A form in which techniques questions was asked and answered. 
 The bloggers can raise some questions and answers. They can chat with each other.
 
-There are 2 users on the application :-
+There are 2 modules on the application :-
 1. User
 2. Admin
 
