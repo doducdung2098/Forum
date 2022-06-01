@@ -43,7 +43,7 @@ public class AnswersServiceImpl implements AnswersService {
 
     @Override
     public void deleteById(int id) {
-        if(!findById(id).isPresent()){
+        if(findById(id) == null){
             throw new InvalidInputException(Constant.INVALID_MESSAGE);
         }
         answersRepository.deleteById(id);
@@ -53,7 +53,7 @@ public class AnswersServiceImpl implements AnswersService {
         if (t == null){
             throw new NullPointerException(Constant.INVALID_MESSAGE);
         }
-        if(!findById(t.getId()).isPresent()){
+        if(findById(t.getId()) == null){
             throw new InvalidInputException(Constant.INVALID_MESSAGE);
         }
         answersRepository.save(t.toEntity());
@@ -89,7 +89,7 @@ public class AnswersServiceImpl implements AnswersService {
 
     @Override
     public Answers approvedAnswers(int id, int status) {
-        if(findById(id).isEmpty() || status < 0 || status > 1){
+        if(findById(id) == null || status < 0 || status > 1){
             throw new InvalidInputException(Constant.INVALID_MESSAGE);
         }
         return answersManagement.update(id, status);

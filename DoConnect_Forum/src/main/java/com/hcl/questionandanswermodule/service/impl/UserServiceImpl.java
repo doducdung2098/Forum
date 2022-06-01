@@ -40,7 +40,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void deleteById(int id) {
-        if (!userRepository.findById(id).isPresent()){
+        if (findById(id) == null){
             throw new InvalidInputException(Constant.INVALID_MESSAGE);
         }
         userRepository.deleteById(id);
@@ -51,7 +51,7 @@ public class UserServiceImpl implements UserService {
         if (t == null){
             throw new NullPointerException(Constant.INVALID_MESSAGE);
         }
-        if (!userRepository.findById(t.getUserId()).isPresent()){
+        if (findById(t.getUserId()) == null){
             throw new InvalidInputException(Constant.INVALID_MESSAGE);
         }
         userRepository.save(t.toEntity());

@@ -46,7 +46,7 @@ public class QuestionServiceImpl implements QuestionService {
 
     @Override
     public void deleteById(int id) {
-        if (!questionRepository.findById(id).isPresent() ){
+        if (findById(id) == null ){
             throw new InvalidInputException(Constant.INVALID_MESSAGE);
         }
         questionRepository.deleteById(id);
@@ -54,7 +54,7 @@ public class QuestionServiceImpl implements QuestionService {
 
     @Override
     public void update(QuestionDto t) {
-        if(!questionRepository.findById(t.getId()).isPresent()){
+        if(findById(t.getId()) == null){
             throw new InvalidInputException(Constant.INVALID_MESSAGE);
         }
         questionRepository.save(t.toEntity());
@@ -108,7 +108,7 @@ public class QuestionServiceImpl implements QuestionService {
 
     @Override
     public Question approvedQuestion(int id, int status) {
-        if (questionRepository.findById(id).isEmpty() || status < 0 || status > 1){
+        if (findById(id) == null || status < 0 || status > 1){
             throw new InvalidInputException(Constant.INVALID_MESSAGE);
         }
        return questionManagement.approval(id, status);
