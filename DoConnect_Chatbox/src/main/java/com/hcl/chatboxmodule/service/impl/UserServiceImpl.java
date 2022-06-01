@@ -108,7 +108,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<UserDto> toDto(List<User> users) {
-        if (users == null || users.isEmpty()){
+        if (users == null){
+            throw new NullPointerException(Constant.INVALID_MESSAGE);
+        }
+        if ( users.isEmpty()){
             return new ArrayList<>();
         }else {
             List<UserDto> userDtos = new ArrayList<>();

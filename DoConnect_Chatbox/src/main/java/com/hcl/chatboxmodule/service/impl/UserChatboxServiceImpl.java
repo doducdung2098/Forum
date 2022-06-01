@@ -46,7 +46,7 @@ public class UserChatboxServiceImpl implements UserChatboxService {
         if (findById(id).isPresent()){
             userChatboxRepository.deleteById(id);
         }else {
-            throw new InvalidInputException("id not found");
+            throw new InvalidInputException(Constant.INVALID_MESSAGE);
         }
     }
 
@@ -93,8 +93,12 @@ public class UserChatboxServiceImpl implements UserChatboxService {
      */
 
     public List<UserChatboxDto> toListDto(List<UserChatbox> userList){
-        if (userList.isEmpty()){
-            return null;
+        if (userList == null){
+            throw new NullPointerException(Constant.INVALID_MESSAGE);
+        }
+
+        if ( userList.isEmpty()){
+            return new ArrayList<>();
         }else {
             List<UserChatboxDto> userDtos = new ArrayList<>();
             userList.forEach(e ->{

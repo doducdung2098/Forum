@@ -27,23 +27,22 @@ public class MessageServiceImpl implements MessageService {
     @Override
     public MessageDto save(MessageDto t) {
         if (t == null){
-            throw new InvalidInputException("input not found");
+            throw new NullPointerException(Constant.INVALID_MESSAGE);
         }
         return messageRepository.save(t.toEntity()).toDto();
     }
 
     @Override
     public void update(MessageDto t) {
-        if (!messageRepository.findById(t.getId()).isPresent()){
-            throw new InvalidInputException("id not found");
-        }else {
-            messageRepository.save(t.toEntity());
+        if (!findById(t.getId()).isPresent()){
+            throw new InvalidInputException(Constant.INVALID_MESSAGE);
         }
+        messageRepository.save(t.toEntity());
     }
 
     @Override
     public void delete(int id) {
-        if (!messageRepository.findById(id).isPresent()){
+        if (!findById(id).isPresent()){
             throw new InvalidInputException(Constant.INVALID_MESSAGE);
         }else {
             messageRepository.deleteById(id);
@@ -71,7 +70,7 @@ public class MessageServiceImpl implements MessageService {
     @Override
     public List<MessageDto> findMessageByChatboxId(int chatboxId) {
         if (chatboxId <= 0){
-            throw new InvalidInputException("id not found");
+            throw new InvalidInputException(Constant.INVALID_MESSAGE);
         }else{
             return toListDto(messageRepository.findAll(MessageSpecs.findMessageByChatboxId(chatboxId)));
         }
@@ -82,8 +81,11 @@ public class MessageServiceImpl implements MessageService {
     convert to dto
      */
     public List<MessageDto> toListDto(List<Message> messages){
+        if (messages == null){
+            throw new NullPointerException(Constant.INVALID_MESSAGE);
+        }
         if (messages.isEmpty()){
-            return  null;
+            return new ArrayList<>();
         }else {
             List<MessageDto> messageDtos = new ArrayList<>();
             messages.forEach(e ->{
