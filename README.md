@@ -24,12 +24,13 @@ There are 2 modules on the application :-
 the platform only if it is approved.
 4. As an Admin I should be able to delete inappropriate Questions or Answers.
 
-### Tech stack
+## Technologies
 - Front-end: Angular, Bootstrap.
 - Back-end: Spring Boot, Spring JPA, Specification, Websocket, Junit 5.
 - Database: MySQL, H2 database to testing.
 
-### Requirements
+## Requirements
 - Download and run on MySQL server: chatboxtest.sql, authdb.sql, qadbtest.sql
-- admin account: admin - 12345
-- user account: dungdo - 12345
+- Login with:
+    - admin account: admin - 12345
+    - user account: dungdo - 12345
