@@ -18,6 +18,7 @@ import java.util.Optional;
 public class MessageServiceImpl implements MessageService {
 
     private MessageRepository messageRepository;
+    private int minIndex = 0;
 
     @Autowired
     public MessageServiceImpl(MessageRepository messageRepository) {
@@ -56,7 +57,7 @@ public class MessageServiceImpl implements MessageService {
 
     @Override
     public Optional<MessageDto> findById(int id) {
-        if (id <= 0){
+        if (id <= minIndex){
             throw new InvalidInputException(Constant.INVALID_MESSAGE);
         }
         if (messageRepository.findById(id).isPresent()){
@@ -69,7 +70,7 @@ public class MessageServiceImpl implements MessageService {
 
     @Override
     public List<MessageDto> findMessageByChatboxId(int chatboxId) {
-        if (chatboxId <= 0){
+        if (chatboxId <= minIndex){
             throw new InvalidInputException(Constant.INVALID_MESSAGE);
         }else{
             return toListDto(messageRepository.findAll(MessageSpecs.findMessageByChatboxId(chatboxId)));
