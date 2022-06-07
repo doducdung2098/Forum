@@ -12,6 +12,7 @@
         <option value="$PROJECT_DIR$/DoConnect_Chatbot/pom.xml" />
         <option value="$PROJECT_DIR$/DoConnect_Auth/pom.xml" />
         <option value="$PROJECT_DIR$/DoConnect_Chatbox/pom.xml" />
+        <option value="$PROJECT_DIR$/DoConnect_APIGateway/pom.xml" />
       </list>
     </option>
   </component>

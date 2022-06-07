@@ -3,6 +3,7 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/AuthModule/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/CapstoneServer/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/DoConnect_APIGateway/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/DoConnect_Auth/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/DoConnect_Auth/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/DoConnect_Chatbox/src/main/java" charset="UTF-8" />

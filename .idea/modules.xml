@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/DoConnect_Server/CapstoneServer.iml" filepath="$PROJECT_DIR$/DoConnect_Server/CapstoneServer.iml" />
       <module fileurl="file://$PROJECT_DIR$/DoConnect_Chatbox/ChatboxModule.iml" filepath="$PROJECT_DIR$/DoConnect_Chatbox/ChatboxModule.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/DoConnect.iml" filepath="$PROJECT_DIR$/.idea/DoConnect.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DoConnect_APIGateway/DoConnect_APIGateway.iml" filepath="$PROJECT_DIR$/DoConnect_APIGateway/DoConnect_APIGateway.iml" />
       <module fileurl="file://$PROJECT_DIR$/AuthModule/DoConnect_Auth.iml" filepath="$PROJECT_DIR$/AuthModule/DoConnect_Auth.iml" />
       <module fileurl="file://$PROJECT_DIR$/DoConnect_Chatbox/DoConnect_Chatbot.iml" filepath="$PROJECT_DIR$/DoConnect_Chatbox/DoConnect_Chatbot.iml" />
       <module fileurl="file://$PROJECT_DIR$/ChatboxModule/DoConnect_Chatbox.iml" filepath="$PROJECT_DIR$/ChatboxModule/DoConnect_Chatbox.iml" />

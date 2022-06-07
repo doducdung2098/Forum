@@ -10,6 +10,7 @@
         <module name="CapstoneServer" />
         <module name="DoConnect_Chatbox" />
         <module name="DoConnect_Forum" />
+        <module name="DoConnect_APIGateway" />
         <module name="AuthModule" />
         <module name="ChatboxModule" />
         <module name="DoConnect_Auth" />
@@ -21,6 +22,7 @@
       <module name="AuthModule" target="17" />
       <module name="CapstoneServer" target="17" />
       <module name="ChatboxModule" target="17" />
+      <module name="DoConnect_APIGateway" target="17" />
       <module name="DoConnect_Auth" target="17" />
       <module name="DoConnect_Chatbot" target="17" />
       <module name="DoConnect_Chatbox" target="17" />
@@ -35,6 +37,7 @@
       <module name="AuthModule" options="-parameters" />
       <module name="CapstoneServer" options="-parameters" />
       <module name="ChatboxModule" options="-parameters" />
+      <module name="DoConnect_APIGateway" options="-parameters" />
       <module name="DoConnect_Auth" options="-parameters" />
       <module name="DoConnect_Chatbot" options="-parameters" />
       <module name="DoConnect_Chatbox" options="-parameters" />
