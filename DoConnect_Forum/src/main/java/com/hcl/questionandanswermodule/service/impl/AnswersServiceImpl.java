@@ -34,7 +34,7 @@ public class AnswersServiceImpl implements AnswersService {
     @Override
     public AnswersDto save(AnswersDto t) {
         if (t == null){
-            throw new NullPointerException("input invalid");
+            throw new NullPointerException(Constant.INVALID_MESSAGE);
         }
 
         Answers answers = answersRepository.save(t.toEntity());
@@ -79,11 +79,10 @@ public class AnswersServiceImpl implements AnswersService {
 
     @Override
     public List<AnswersDto> findByQuestionId(int id, int paged) {
-        if (paged < minIndex || id < 0){
+        if (paged < minIndex || id < minIndex){
             throw new InvalidInputException(Constant.INVALID_MESSAGE);
         }
         Pageable pageable = PageRequest.of(paged, 10, Sort.unsorted());
-//        return toDto(answersRepository.findByQuestionId(id, pageable).getContent());
         return toDto(answersRepository.findAll(AnswersSpecs.findByQuestionId(id), pageable).getContent());
     }
 
